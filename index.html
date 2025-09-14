@@ -2,298 +2,317 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NextAds - Digital Creative</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextAds Courses — Kursus Digital Lengkap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    :root{--berry-1:#3b0a45;--berry-2:#2a0435;--berry-3:#1c0225;--accent:#ffc8ff}
+    html,body{height:100%;margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--berry-1),var(--berry-2) 40%,var(--berry-3));color:#fff}
+    .site-nav{background:rgba(0,0,0,0.12);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.04)}
+    .nav-link{color:rgba(255,255,255,0.92)!important}
+    .nav-link:hover{color:var(--accent)!important}
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0c0c13;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
+    .hero{padding:64px 0;text-align:center}
+    .hero h1{font-size:clamp(30px,4vw,52px);margin-bottom:8px}
+    .hero .lead{color:#e7d8f1;max-width:900px;margin:0 auto 18px}
+    .btn-accent{background:linear-gradient(90deg,#9b3fff,#ff7ce6);border:none;color:#210022}
 
-    header {
-      position: relative;
-      background-color: #121212;
-      padding: 1rem 0;
-      text-align: center;
-      box-shadow: 0 0 12px rgba(64, 224, 208, 0.6), 0 0 25px rgba(64, 224, 208, 0.4);
-      z-index: 0;
-    }
+    .card-berry{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);border-radius:12px}
 
-    header > * {
-      position: relative;
-      z-index: 1;
-    }
+    .clients-wrap{overflow:hidden;border-radius:10px;padding:12px;background:linear-gradient(180deg,rgba(0,0,0,0.06),rgba(0,0,0,0.02))}
+    .marquee{display:flex;gap:48px;align-items:center;animation:marquee-right 20s linear infinite}
+    .marquee img{height:48px;width:auto;opacity:.95}
+    @keyframes marquee-right{0%{transform:translateX(-50%)}100%{transform:translateX(0%)}}
 
-    header::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120%;
-      height: 60px;
-      background: radial-gradient(ellipse at center, rgba(64, 224, 208, 0.5) 0%, rgba(64, 224, 208, 0) 70%);
-      border-radius: 50% / 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
+    footer small{color:rgba(255,255,255,0.6)}
+    .badge-soft{background:rgba(255,255,255,0.06);color:#fff;border-radius:6px;padding:4px 8px;font-size:.82rem}
 
-    .logo {
-      font-size: 1.7rem;
-      font-weight: bold;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-    }
-
-    nav {
-      display: inline-flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      padding: 0.3rem 0.6rem;
-      transition: color 0.3s ease;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      background: linear-gradient(90deg, #ff3cac, #784ba0, #2b86c5);
-      left: 0;
-      bottom: -4px;
-      transition: 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #ff3cac;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    section {
-      padding: 4rem 1.5rem;
-      max-width: 1200px;
-      margin: auto;
-      border-bottom: 1px solid #301835;
-    }
-
-    section#home {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      background-color: #0c0c13;
-    }
-
-    section#home > div:first-child {
-      flex: 1 1 500px;
-    }
-
-    section#home > div:last-child {
-      flex: 1 1 500px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 3rem;
-      color: #ff3cac;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      color: #ffffff;
-      text-align: center;
-    }
-
-    h2::after {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 3px;
-      margin: 5px auto 0;
-      background: linear-gradient(90deg, #ff3cac, #784ba0, #2b86c5);
-      animation: glitch-line 2s infinite linear;
-    }
-
-    @keyframes glitch-line {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
-    }
-
-    h3 {
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: #ff3cac;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    p {
-      font-size: 1rem;
-      color: #ccc;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
-
-    ul {
-      color: #aaa;
-      margin-left: 1.2rem;
-      margin-bottom: 2rem;
-      list-style: square;
-    }
-
-    ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    a.button-primary {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      background: linear-gradient(90deg, #ff3cac, #784ba0, #2b86c5);
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 0 15px rgba(255, 60, 172, 0.4);
-      transition: background 0.3s ease;
-    }
-
-    a.button-primary:hover {
-      background: linear-gradient(90deg, #784ba0, #ff3cac, #2b86c5);
-    }
-
-    #client, #testimoni, #pricing, #founder {
-      background-color: #0c0c13;
-      color: #ccc;
-      text-align: center;
-      padding-top: 3rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid #301835;
-    }
-
-    #client p, #testimoni p, #founder p {
-      max-width: 700px;
-      margin: 0 auto 2rem auto;
-      color: #ccc;
-      font-size: 1.1rem;
-      line-height: 1.7;
-    }
-
-    #pricing ul {
-      max-width: 400px;
-      margin: 1rem auto 2rem auto;
-      padding-left: 1.5rem;
-      text-align: left;
-      color: #aaa;
-      font-size: 1rem;
-    }
-
-    #pricing ul li {
-      margin-bottom: 1rem;
-      font-weight: 500;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      background-color: #111;
-      color: #999;
-      border-top: 2px solid #ff3cac;
-    }
-
-    @media (max-width: 768px) {
-      section#home {
-        flex-direction: column;
-      }
-      section#home > div {
-        flex: 1 1 100%;
-      }
-    }
+    /* responsive */
+    @media (max-width:768px){.hero{padding:40px 0}.marquee img{height:36px}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">NextAds</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#client">Client</a>
-      <a href="#testimoni">Testimoni</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#founder">Founder</a>
-    </nav>
+  <nav class="navbar navbar-expand-lg site-nav">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-white" href="#">NextAds Courses</a>
+      <button class="navbar-toggler btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#courses">Kursus</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#owner">Tentang</a></li>
+          <li class="nav-item"><a class="nav-link" href="#clients">Klien</a></li>
+          <li class="nav-item ms-3"><a class="btn btn-accent" href="#enroll">Daftar Sekarang</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header id="home" class="hero">
+    <div class="container">
+      <h1>NextAds — Kursus Digital Lengkap</h1>
+      <p class="lead">Sekarang kami fokus menerima pendaftaran kursus: HTML Full (dari dasar sampai profesional), Digital Marketing, Security & Ethical Hacking (tujuan defensif/legal), Iklan Berbayar (Ads), Analytics, dan automation untuk bisnis online.</p>
+
+      <p class="mb-3" style="color:rgba(255,255,255,0.78)">Kursus disusun untuk praktisi dan pemilik bisnis. Materi hands-on, proyek nyata, dan sertifikat setelah selesai.</p>
+
+      <div class="d-flex justify-content-center gap-3">
+        <a class="btn btn-accent btn-lg" href="#courses">Lihat Kursus</a>
+        <a class="btn btn-outline-light btn-lg" href="#enroll">Daftar Gratis Konsultasi</a>
+      </div>
+
+      <div class="row mt-5 gx-3">
+        <div class="col-md-4 mt-3"><div class="p-3 card-berry"><h5 class="mb-1">Praktis & Project-based</h5><p style="color:rgba(255,255,255,0.78)">Setiap modul dilengkapi tugas nyata untuk portofolio.</p></div></div>
+        <div class="col-md-4 mt-3"><div class="p-3 card-berry"><h5 class="mb-1">Mentor Berpengalaman</h5><p style="color:rgba(255,255,255,0.78)">Instruktur praktisi IT & marketing dengan pengalaman lapangan.</p></div></div>
+        <div class="col-md-4 mt-3"><div class="p-3 card-berry"><h5 class="mb-1">Kelas Online & Rekaman</h5><p style="color:rgba(255,255,255,0.78)">Live session + akses rekaman seumur hidup (opsional).</p></div></div>
+      </div>
+    </div>
   </header>
 
-  <section id="home">
-    <div>
-      <center><h1>NextAds</h1></center> 
-      <h2>Digital Expert Meet the Creative Root</h2>
-      <h3>#Real Impact</h3>
-      <p>
-        Di dunia digital yang terus berkembang, NextAds hadir sebagai mitra strategis yang menghadirkan solusi pemasaran berbasis data, kreatif, dan berdampak langsung. Kami memadukan teknologi, kreativitas, dan strategi untuk menciptakan kampanye digital yang tidak hanya menarik perhatian, tetapi juga menghasilkan konversi nyata.
-      </p>
-      <ul>
-        <li>Kampanye Iklan Berbasis Data</li>
-        <li>Konten Kreatif & Viral</li>
-        <li>Optimasi Performa & ROI</li>
-        <li>Tim Profesional & Bersertifikat</li>
-      </ul>
-      <a href="#pricing" class="button-primary">Lihat Paket Layanan</a>
+  <main class="container">
+    <section id="courses" class="py-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Daftar Kursus</h3>
+        <small style="color:rgba(255,255,255,0.6)">Pilih yang sesuai kebutuhanmu</small>
+      </div>
+
+      <div class="row g-4 mt-2">
+        <!-- HTML Full -->
+        <div class="col-md-6">
+          <div class="p-4 card-berry h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h5>HTML & Frontend Full (HTML, CSS, JS)</h5>
+                <p style="color:rgba(255,255,255,0.8)">Dari dasar HTML sampai membangun website profesional: responsive layout, accessibility, performance, dan optimasi SEO on-page.</p>
+                <div class="badge-soft">Durasi: 6 minggu · Project: Landing page + Portofolio</div>
+              </div>
+              <div class="text-end">
+                <a class="btn btn-outline-light" href="#enroll" style="white-space:nowrap">Daftar</a>
+              </div>
+            </div>
+
+            <hr style="border-color:rgba(255,255,255,0.04)">
+            <strong>Modul Utama:</strong>
+            <ul style="color:rgba(255,255,255,0.78)">
+              <li>HTML5 & Semantic Markup</li>
+              <li>CSS Modern (Flexbox, Grid, Animations)</li>
+              <li>JavaScript dasar & DOM</li>
+              <li>Responsive Design & Bootstrap</li>
+              <li>Performance & Accessibility</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Digital Marketing -->
+        <div class="col-md-6">
+          <div class="p-4 card-berry h-100">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h5>Digital Marketing & Growth</h5>
+                <p style="color:rgba(255,255,255,0.8)">Strategi kanal, content marketing, SEO, email, dan growth loops untuk meningkatkan traffic & conversion.</p>
+                <div class="badge-soft">Durasi: 8 minggu · Project: Campaign & Funnel</div>
+              </div>
+              <div>
+                <a class="btn btn-outline-light" href="#enroll">Daftar</a>
+              </div>
+            </div>
+
+            <hr style="border-color:rgba(255,255,255,0.04)">
+            <strong>Modul Utama:</strong>
+            <ul style="color:rgba(255,255,255,0.78)">
+              <li>SEO Technical & Content Strategy</li>
+              <li>Content Creation & Copywriting</li>
+              <li>Email Marketing & Automation</li>
+              <li>Analytics & Conversion Rate Optimization</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Security & Ethical Hacking -->
+        <div class="col-md-6">
+          <div class="p-4 card-berry h-100">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h5>Security & Ethical Hacking (Defensive)</h5>
+                <p style="color:rgba(255,255,255,0.8)">Kursus keamanan untuk tujuan defensif: audit, hardening, dan pengujian penetrasi etis dengan prinsip legal & etika.</p>
+                <div class="badge-soft">Durasi: 8 minggu · Sertifikasi internal</div>
+              </div>
+              <div>
+                <a class="btn btn-outline-light" href="#enroll">Daftar</a>
+              </div>
+            </div>
+
+            <hr style="border-color:rgba(255,255,255,0.04)">
+            <strong>Modul Utama:</strong>
+            <ul style="color:rgba(255,255,255,0.78)">
+              <li>Fundamental Keamanan Jaringan & Web</li>
+              <li>Setup Lab & Tools (legal use)</li>
+              <li>Penetration Testing: metodologi (tanpa tutorial eksploit berbahaya di publik)</li>
+              <li>Hardening & Incident Response</li>
+              <li>Etika & Kepatuhan Hukum</li>
+            </ul>
+            <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-top:8px"><em>Catatan: Materi disampaikan untuk tujuan defensif dan pendidikan. Jangan gunakan ilmu ini untuk tindakan ilegal. Kami menekankan etika dan kepatuhan hukum.</em></p>
+          </div>
+        </div>
+
+        <!-- Ads & Performance -->
+        <div class="col-md-6">
+          <div class="p-4 card-berry h-100">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h5>Ads & Performance (Facebook / Google / TikTok)</h5>
+                <p style="color:rgba(255,255,255,0.8)">Setup campaign, creative testing, analytics, dan optimasi untuk maximize ROAS.</p>
+                <div class="badge-soft">Durasi: 6 minggu · Live Campaign</div>
+              </div>
+              <div>
+                <a class="btn btn-outline-light" href="#enroll">Daftar</a>
+              </div>
+            </div>
+
+            <hr style="border-color:rgba(255,255,255,0.04)">
+            <strong>Modul Utama:</strong>
+            <ul style="color:rgba(255,255,255,0.78)">
+              <li>Setup & Pixel Tracking</li>
+              <li>Creative Strategy & A/B Testing</li>
+              <li>Bid Strategy & Budgeting</li>
+              <li>Reporting & Scale Up</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="pricing" class="py-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Paket & Harga</h3>
+        <small style="color:rgba(255,255,255,0.6)">Harga awal — bisa disesuaikan untuk corporate</small>
+      </div>
+
+      <div class="row g-4 mt-2">
+        <div class="col-md-4"><div class="p-4 card-berry h-100"><h5>Bootcamp</h5><p style="color:rgba(255,255,255,0.78)">Intensif 4 minggu — cocok untuk pemula yang mau cepat.</p><div class="mt-3"><strong>Rp 1.800.000</strong></div></div></div>
+        <div class="col-md-4"><div class="p-4 card-berry h-100"><h5>Professional</h5><p style="color:rgba(255,255,255,0.78)">Kurikulum lengkap + mentor 1:1.</p><div class="mt-3"><strong>Rp 4.500.000</strong></div></div></div>
+        <div class="col-md-4"><div class="p-4 card-berry h-100"><h5>Corporate</h5><p style="color:rgba(255,255,255,0.78)">Kelas privat & modul kustom untuk tim.</p><div class="mt-3"><strong>Hubungi untuk penawaran</strong></div></div></div>
+      </div>
+    </section>
+
+    <section id="owner" class="py-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Tentang Instructor</h3>
+        <small style="color:rgba(255,255,255,0.6)">Praktisi dengan pengalaman nyata</small>
+      </div>
+
+      <div class="row g-4 align-items-center">
+        <div class="col-md-3"><div class="p-3 card-berry text-center"><div style="width:96px;height:96px;border-radius:999px;background:linear-gradient(90deg,#8a3bff,#ff8ad0);margin:0 auto 10px;"></div><h6 class="mb-0">Alex Pratama</h6><small style="color:rgba(255,255,255,0.6)">Founder / Lead Instructor</small></div></div>
+        <div class="col-md-9"><div class="p-3 card-berry"><p style="color:rgba(255,255,255,0.85)">Saya menggabungkan pengalaman teknis di bidang IT, security, dan digital marketing. Kursus ini dirancang praktis agar kamu bisa langsung kerja atau menjalankan kampanye dan audit keamanan sendiri.</p></div></div>
+      </div>
+    </section>
+
+    <section id="clients" class="py-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Klien & Alumni</h3>
+        <small style="color:rgba(255,255,255,0.6)">Beberapa brand & alumni yang sudah ikut</small>
+      </div>
+      <div class="clients-wrap">
+        <div class="marquee" aria-hidden="true">
+          <img src="assets/logo1.png" alt="Logo Client 1">
+          <img src="assets/logo2.png" alt="Logo Client 2">
+          <img src="assets/logo3.png" alt="Logo Client 3">
+          <img src="assets/logo4.png" alt="Logo Client 4">
+          <img src="assets/logo5.png" alt="Logo Client 5">
+          <img src="assets/logo6.png" alt="Logo Client 6">
+
+          <!-- duplicate for smooth loop -->
+          <img src="assets/logo1.png" alt="Logo Client 1 dup">
+          <img src="assets/logo2.png" alt="Logo Client 2 dup">
+          <img src="assets/logo3.png" alt="Logo Client 3 dup">
+          <img src="assets/logo4.png" alt="Logo Client 4 dup">
+          <img src="assets/logo5.png" alt="Logo Client 5 dup">
+          <img src="assets/logo6.png" alt="Logo Client 6 dup">
+        </div>
+      </div>
+    </section>
+
+    <section id="enroll" class="py-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Daftar / Konsultasi</h3>
+        <small style="color:rgba(255,255,255,0.6)">Isi form, kami akan hubungi untuk jadwal</small>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <form class="p-4 card-berry" id="enrollForm">
+            <div class="mb-3"><label class="form-label">Nama Lengkap</label><input class="form-control" id="name" required></div>
+            <div class="mb-3"><label class="form-label">Email</label><input class="form-control" type="email" id="email" required></div>
+            <div class="mb-3"><label class="form-label">No. WA</label><input class="form-control" id="wa" placeholder="62..." required></div>
+            <div class="mb-3"><label class="form-label">Kursus yang dipilih</label>
+              <select class="form-select" id="course">
+                <option>HTML & Frontend Full</option>
+                <option>Digital Marketing</option>
+                <option>Security & Ethical Hacking</option>
+                <option>Ads & Performance</option>
+              </select>
+            </div>
+            <div class="mb-3"><label class="form-label">Pesan singkat</label><textarea class="form-control" id="message" rows="3"></textarea></div>
+            <button class="btn btn-accent" type="submit">Kirim Pendaftaran</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 card-berry">
+            <h5>Langkah pendaftaran</h5>
+            <ol style="color:rgba(255,255,255,0.78)">
+              <li>Kirim form — kami hubungi via WA atau email.</li>
+              <li>Konfirmasi jadwal & pembayaran.</li>
+              <li>Akses materi & grup belajar.</li>
+              <li>Selesaikan tugas & dapat sertifikat.</li>
+            </ol>
+            <h6 class="mt-3">Pertanyaan umum</h6>
+            <p style="color:rgba(255,255,255,0.78)"><strong>Apakah kursus live?</strong> Ada kombinasi live + rekaman. <br><strong>Perlukah pengalaman?</strong> Untuk HTML kursus cocok untuk pemula; untuk security disarankan pemahaman dasar IT.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="py-4 mt-5">
+    <div class="container d-flex justify-content-between align-items-center">
+      <small>© 2025 NextAds Courses. All rights reserved.</small>
+      <div>
+        <a class="me-3" href="#" style="color:rgba(255,255,255,0.7)">Instagram</a>
+        <a class="me-3" href="#" style="color:rgba(255,255,255,0.7)">Facebook</a>
+        <a href="#" style="color:rgba(255,255,255,0.7)">Twitter</a>
+      </div>
     </div>
-    <div>
-      <img src="https://cdn.dribbble.com/users/1626229/screenshots/16001919/media/4d3cc1ed15c3f95f186b4b0df0c116ae.gif" alt="NextAds Digital Marketing" style="max-width: 100%; border-radius: 12px; box-shadow: 0 0 20px rgba(255, 60, 172, 0.3);">
-    </div>
-  </section>
+  </footer>
 
-  <section id="client">
-    <h2>Client Kami</h2>
-    <p>Kami dipercaya oleh berbagai brand, UMKM, dan perusahaan besar untuk mengelola digital advertising mereka secara profesional.</p>
-  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // simple form handler (frontend only) — replace with real backend or integration
+    document.getElementById('enrollForm')?.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        wa: document.getElementById('wa').value,
+        course: document.getElementById('course').value,
+        message: document.getElementById('message').value,
+      };
+      // for demo, just show modal / alert
+      alert('Terima kasih, ' + data.name + '\nKami akan menghubungi Anda segera untuk konfirmasi.');
+      // TODO: kirim data ke server / Google Sheets / email
+      this.reset();
+    });
 
-  <section id="testimoni">
-    <h2>Testimoni</h2>
-    <p>"NextAds bantu kami naik 300% dalam 2 bulan!" — <em>Rico, CEO UMKM Jogja</em></p>
-    <p>"Support cepat dan hasil iklan sangat efisien." — <em>Alya, Owner Skincare Brand</em></p>
-  </section>
-
-  <section id="pricing">
-    <h2>Paket Harga</h2>
-    <ul>
-      <li><strong>Starter:</strong> Rp500rb/bln - Iklan & report</li>
-      <li><strong>Pro:</strong> Rp1.5jt/bln - Iklan + konten + optimasi</li>
-      <li><strong>Premium:</strong> Rp3jt/bln - Full strategi + tim support</li>
-    </ul>
-  </section>
-
-  <section id="founder">
-    <h2>Founder</h2>
-    <p>Didirikan oleh <strong>Fahmi Alamsyah</strong>, praktisi digital marketing dengan pengalaman lebih dari 8 tahun membangun brand lokal dari nol hingga ratusan juta penjualan.</p>
-  </section>
-
-  <div class="footer">
-    &copy; 2025 NextAds. All Rights Reserved.
-  </div>
+    // marquee pause on hover
+    (function(){
+      const marquee = document.querySelector('.marquee');
+      if(!marquee) return;
+      marquee.addEventListener('mouseenter', ()=> marquee.style.animationPlayState = 'paused');
+      marquee.addEventListener('mouseleave', ()=> marquee.style.animationPlayState = 'running');
+    })();
+  </script>
 </body>
 </html>
