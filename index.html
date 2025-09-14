@@ -1,371 +1,299 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NextAds — Digital Expert, Real Impact</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextAds - Digital Creative</title>
   <style>
-    :root{
-      --berry-1:#4b006e;
-      --berry-2:#5c007a;
-      --berry-3:#2e003f;
-      --accent:#ffc8ff;
-    }
-    html,body{
-      height:100%;
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(180deg,var(--berry-1),var(--berry-2) 40%,var(--berry-3));
-      color:#fff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* ---------- NAV ---------- */
-    .site-nav{
-      background: rgba(0,0,0,0.12);
-      backdrop-filter: blur(6px);
-      border-bottom:1px solid rgba(255,255,255,0.04);
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0c0c13;
+      color: #ffffff;
+      overflow-x: hidden;
     }
-    .nav-link{
-      color: rgba(255,255,255,0.9) !important;
-    }
-    .nav-link:hover{ color: var(--accent) !important; }
 
-    /* ---------- HERO / HEADER ---------- */
-    .hero {
-      padding: 64px 0;
+    header {
+      position: relative;
+      background-color: #121212;
+      padding: 1rem 0;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(64, 224, 208, 0.6), 0 0 25px rgba(64, 224, 208, 0.4);
+      z-index: 0;
+    }
+
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 60px;
+      background: radial-gradient(ellipse at center, rgba(64, 224, 208, 0.5) 0%, rgba(64, 224, 208, 0) 70%);
+      border-radius: 50% / 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: inline-flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.3rem 0.6rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #ff3cac, #784ba0, #2b86c5);
+      left: 0;
+      bottom: -4px;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff3cac;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 4rem 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+      border-bottom: 1px solid #301835;
+    }
+
+    section#home {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      background-color: #0c0c13;
+    }
+
+    section#home > div:first-child {
+      flex: 1 1 500px;
+    }
+
+    section#home > div:last-child {
+      flex: 1 1 500px;
       text-align: center;
     }
-    .hero h1 {
-      font-size: clamp(32px, 4vw, 56px);
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-    .hero .lead {
-      color: #e7d8f1;
-      font-size: 1.05rem;
-      max-width: 880px;
-      margin: 0 auto 22px;
-    }
-    .hero .subtext {
-      color: rgba(255,255,255,0.75);
-      max-width: 720px;
-      margin: 0 auto 26px;
-    }
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.12);
-      color: #fff;
-    }
-    .btn-accent {
-      background: linear-gradient(90deg,#9b3fff,#ff7ce6);
-      border: none;
-      color: #210022;
+
+    h1 {
+      font-size: 3rem;
+      color: #ff3cac;
+      margin-bottom: 1rem;
     }
 
-    /* ---------- CONTENT CARDS ---------- */
-    .card-berry {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.04);
-      color: #fff;
-      border-radius: 12px;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .card-berry:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      text-align: center;
     }
 
-    /* ---------- CLIENT MARQUEE (move to right) ---------- */
-    .clients-wrap {
-      overflow: hidden;
-      position: relative;
-      background: linear-gradient(180deg,rgba(0,0,0,0.06),rgba(0,0,0,0.02));
-      border-radius: 10px;
-      padding: 14px 10px;
+    h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      margin: 5px auto 0;
+      background: linear-gradient(90deg, #ff3cac, #784ba0, #2b86c5);
+      animation: glitch-line 2s infinite linear;
     }
 
-    .marquee {
-      display: flex;
-      gap: 48px;
-      align-items: center;
-      /* duplicate set width: we'll animate from -50% -> 0 to make it appear moving to right */
-      will-change: transform;
-      animation: marquee-right 20s linear infinite;
+    @keyframes glitch-line {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
     }
 
-    .marquee img {
-      height: 48px;
-      width: auto;
-      opacity: .95;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
-      transition: transform .15s ease;
-    }
-    .marquee img:hover { transform: scale(1.08); }
-
-    @keyframes marquee-right {
-      0% { transform: translateX(-50%); }
-      100% { transform: translateX(0%); }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #ff3cac;
+      margin-bottom: 1rem;
+      text-align: center;
     }
 
-    /* responsive tweaks */
+    p {
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    ul {
+      color: #aaa;
+      margin-left: 1.2rem;
+      margin-bottom: 2rem;
+      list-style: square;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    a.button-primary {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(90deg, #ff3cac, #784ba0, #2b86c5);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(255, 60, 172, 0.4);
+      transition: background 0.3s ease;
+    }
+
+    a.button-primary:hover {
+      background: linear-gradient(90deg, #784ba0, #ff3cac, #2b86c5);
+    }
+
+    #client, #testimoni, #pricing, #founder {
+      background-color: #0c0c13;
+      color: #ccc;
+      text-align: center;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #301835;
+    }
+
+    #client p, #testimoni p, #founder p {
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    #pricing ul {
+      max-width: 400px;
+      margin: 1rem auto 2rem auto;
+      padding-left: 1.5rem;
+      text-align: left;
+      color: #aaa;
+      font-size: 1rem;
+    }
+
+    #pricing ul li {
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      background-color: #111;
+      color: #999;
+      border-top: 2px solid #ff3cac;
+    }
+
     @media (max-width: 768px) {
-      .hero { padding: 48px 0; }
-      .marquee img { height: 36px; }
+      section#home {
+        flex-direction: column;
+      }
+      section#home > div {
+        flex: 1 1 100%;
+      }
     }
-
-    /* small footer */
-    footer small { color: rgba(255,255,255,0.6); }
   </style>
 </head>
 <body>
-
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg site-nav">
-    <div class="container">
-      <a class="navbar-brand fw-bold text-white" href="#">NextAds</a>
-      <button class="navbar-toggler btn btn-ghost" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navCollapse">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#portfolio">Portofolio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="#owner">Pemilik</a></li>
-          <li class="nav-item"><a class="nav-link" href="#clients">Klien</a></li>
-          <li class="nav-item ms-3"><a class="btn btn-accent" href="#contact">Hubungi</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO / HEADER -->
-  <header id="home" class="hero">
-    <div class="container">
-      <h1>NextAds — Digital Expert, Real Impact</h1>
-      <p class="lead">
-        Kami membantu brand tumbuh dengan strategi pemasaran digital yang terukur: iklan yang tepat sasaran, konten yang mengkonversi,
-        dan optimasi berbasis data. Bukan sekadar like atau view—kami fokus pada hasil nyata: lead, penjualan, dan pertumbuhan berkelanjutan.
-      </p>
-
-      <p class="subtext">
-        Layanan kami meliputi: Performance Marketing (Facebook/Instagram/Google), SEO & Content, Web & Landing Page, Sistem Otomasi, serta Audit Teknis & Keamanan.
-        Berpengalaman bekerja dengan startup, toko online, hingga enterprise—kami buat strategi yang scalable dan bisa diukur.
-      </p>
-
-      <div class="d-flex justify-content-center gap-3">
-        <a class="btn btn-accent btn-lg" href="#portfolio">Lihat Portofolio</a>
-        <a class="btn btn-ghost btn-lg" href="#contact">Minta Konsultasi Gratis</a>
-      </div>
-
-      <div class="row mt-5 gx-3">
-        <div class="col-md-4 mt-3">
-          <div class="p-3 card-berry">
-            <h5 class="mb-1">Kecepatan Eksekusi</h5>
-            <p class="mb-0" style="color:rgba(255,255,255,0.78)">Tim kami bergerak cepat dengan roadmap tertarget agar kampanye segera menghasilkan data.</p>
-          </div>
-        </div>
-        <div class="col-md-4 mt-3">
-          <div class="p-3 card-berry">
-            <h5 class="mb-1">Hasil yang Terukur</h5>
-            <p class="mb-0" style="color:rgba(255,255,255,0.78)">Laporan KPI mingguan & optimasi berkelanjutan untuk meningkatkan ROAS dan konversi.</p>
-          </div>
-        </div>
-        <div class="col-md-4 mt-3">
-          <div class="p-3 card-berry">
-            <h5 class="mb-1">Teknologi & Keamanan</h5>
-            <p class="mb-0" style="color:rgba(255,255,255,0.78)">Implementasi terbaik mulai dari tracking, server, sampai audit keamanan aplikasi/web.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <header>
+    <div class="logo">NextAds</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#client">Client</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#founder">Founder</a>
+    </nav>
   </header>
 
-  <!-- PORTOFOLIO -->
-  <main class="container">
-    <section id="portfolio" class="py-5">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3 class="mb-0">Portofolio Project</h3>
-        <small style="color:rgba(255,255,255,0.6)">Proyek pilihan yang menunjukkan dampak nyata</small>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <article class="p-4 card-berry h-100">
-            <h5>Brand Revamp & Ads</h5>
-            <p style="color:rgba(255,255,255,0.78)">Meningkatkan awareness + 3x konversi untuk e-commerce mode dengan kombinasi iklan video & SEO.</p>
-            <a class="text-decoration-none" href="#" style="color:var(--accent)">Lihat studi kasus →</a>
-          </article>
-        </div>
-        <div class="col-md-4">
-          <article class="p-4 card-berry h-100">
-            <h5>Performance Funnel</h5>
-            <p style="color:rgba(255,255,255,0.78)">Optimasi funnel dan email automation yang menurunkan biaya per akuisisi (CPA) hingga 45%.</p>
-            <a class="text-decoration-none" href="#" style="color:var(--accent)">Lihat studi kasus →</a>
-          </article>
-        </div>
-        <div class="col-md-4">
-          <article class="p-4 card-berry h-100">
-            <h5>Web & Tracking</h5>
-            <p style="color:rgba(255,255,255,0.78)">Membangun landing page konversi tinggi + setup analytics untuk pengambilan keputusan cepat.</p>
-            <a class="text-decoration-none" href="#" style="color:var(--accent)">Lihat studi kasus →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING -->
-    <section id="pricing" class="py-5">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3 class="mb-0">Pricing</h3>
-        <small style="color:rgba(255,255,255,0.6)">Pilih paket sesuai skala bisnis</small>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="p-4 card-berry h-100">
-            <h5>Basic</h5>
-            <p style="color:rgba(255,255,255,0.78)">Setup iklan dasar, 1 kanal, laporan mingguan.</p>
-            <div class="mt-3"><a class="btn btn-outline-light" href="#contact">Pilih Paket</a></div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-4 card-berry h-100">
-            <h5>Standard</h5>
-            <p style="color:rgba(255,255,255,0.78)">Multi-kanal, kreatif + optimasi, laporan 2x/minggu.</p>
-            <div class="mt-3"><a class="btn btn-outline-light" href="#contact">Pilih Paket</a></div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-4 card-berry h-100">
-            <h5>Premium</h5>
-            <p style="color:rgba(255,255,255,0.78)">Full service + audit teknis, dedicated manager.</p>
-            <div class="mt-3"><a class="btn btn-outline-light" href="#contact">Pilih Paket</a></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- OWNER -->
-    <section id="owner" class="py-5">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3 class="mb-0">Pemilik</h3>
-        <small style="color:rgba(255,255,255,0.6)">Team & leadership</small>
-      </div>
-
-      <div class="row g-4 align-items-center">
-        <div class="col-md-3">
-          <div class="p-3 card-berry text-center">
-            <!-- placeholder avatar -->
-            <div style="width:96px;height:96px;border-radius:999px;background:linear-gradient(90deg,#8a3bff,#ff8ad0);margin:0 auto 10px;"></div>
-            <h6 class="mb-0">Alex Pratama</h6>
-            <small style="color:rgba(255,255,255,0.6)">Founder & CEO</small>
-          </div>
-        </div>
-        <div class="col-md-9">
-          <div class="p-3 card-berry">
-            <p style="color:rgba(255,255,255,0.85)">Saya (Alex) menggabungkan pengalaman teknis di bidang IT dan pemasaran digital untuk membangun solusi yang tidak hanya terlihat bagus, tetapi juga aman, terukur, dan bisa diskalakan. Keahlian: advertising, analytics, web & system engineering, automation, dan security audit.</p>
-            <p style="color:rgba(255,255,255,0.72)">Butuh tim untuk implementasi? Kami bisa handle end-to-end dari strategi sampai delivery.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CLIENTS MARQUEE -->
-    <section id="clients" class="py-5">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3 class="mb-0">Klien Kami</h3>
-        <small style="color:rgba(255,255,255,0.6)">Beberapa brand yang pernah bekerja sama</small>
-      </div>
-
-      <div class="clients-wrap">
-        <!-- We duplicate the logos sequence so animation is seamless -->
-        <div class="marquee" aria-hidden="true">
-          <!-- Replace these src with your real logos (assets/logoX.png or remote URLs) -->
-          <img src="assets/logo1.png" alt="Logo Client 1">
-          <img src="assets/logo2.png" alt="Logo Client 2">
-          <img src="assets/logo3.png" alt="Logo Client 3">
-          <img src="assets/logo4.png" alt="Logo Client 4">
-          <img src="assets/logo5.png" alt="Logo Client 5">
-          <img src="assets/logo6.png" alt="Logo Client 6">
-
-          <!-- duplicate -->
-          <img src="assets/logo1.png" alt="Logo Client 1 dup">
-          <img src="assets/logo2.png" alt="Logo Client 2 dup">
-          <img src="assets/logo3.png" alt="Logo Client 3 dup">
-          <img src="assets/logo4.png" alt="Logo Client 4 dup">
-          <img src="assets/logo5.png" alt="Logo Client 5 dup">
-          <img src="assets/logo6.png" alt="Logo Client 6 dup">
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT (simple) -->
-    <section id="contact" class="py-5">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3 class="mb-0">Hubungi Kami</h3>
-        <small style="color:rgba(255,255,255,0.6)">Konsultasi awal gratis</small>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="p-4 card-berry">
-            <h5>Siap bantu scale bisnis Anda</h5>
-            <p style="color:rgba(255,255,255,0.78)">Email: <a href="mailto:hello@nextads.id" style="color:var(--accent)">hello@nextads.id</a><br/>WA: <a href="https://wa.me/6281234567890" style="color:var(--accent)">+62 812-3456-7890</a></p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <form class="p-4 card-berry">
-            <div class="mb-3">
-              <label class="form-label">Nama</label>
-              <input class="form-control" type="text" placeholder="Nama lengkap" />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input class="form-control" type="email" placeholder="email@domain.com" />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Pesan singkat</label>
-              <textarea class="form-control" rows="3" placeholder="Ceritakan kebutuhanmu..."></textarea>
-            </div>
-            <button class="btn btn-accent">Kirim Pesan</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="py-4 mt-5">
-    <div class="container d-flex justify-content-between align-items-center">
-      <small>© 2025 NextAds. All rights reserved.</small>
-      <div>
-        <a class="me-3" href="#" style="color:rgba(255,255,255,0.7)">Instagram</a>
-        <a class="me-3" href="#" style="color:rgba(255,255,255,0.7)">Facebook</a>
-        <a href="#" style="color:rgba(255,255,255,0.7)">Twitter</a>
-      </div>
+  <section id="home">
+    <div>
+      <center><h1>NextAds</h1></center> 
+      <h2>Digital Expert Meet the Creative Root</h2>
+      <h3>#Real Impact</h3>
+      <p>
+        Di dunia digital yang terus berkembang, NextAds hadir sebagai mitra strategis yang menghadirkan solusi pemasaran berbasis data, kreatif, dan berdampak langsung. Kami memadukan teknologi, kreativitas, dan strategi untuk menciptakan kampanye digital yang tidak hanya menarik perhatian, tetapi juga menghasilkan konversi nyata.
+      </p>
+      <ul>
+        <li>Kampanye Iklan Berbasis Data</li>
+        <li>Konten Kreatif & Viral</li>
+        <li>Optimasi Performa & ROI</li>
+        <li>Tim Profesional & Bersertifikat</li>
+      </ul>
+      <a href="#pricing" class="button-primary">Lihat Paket Layanan</a>
     </div>
-  </footer>
+    <div>
+      <img src="https://cdn.dribbble.com/users/1626229/screenshots/16001919/media/4d3cc1ed15c3f95f186b4b0df0c116ae.gif" alt="NextAds Digital Marketing" style="max-width: 100%; border-radius: 12px; box-shadow: 0 0 20px rgba(255, 60, 172, 0.3);">
+    </div>
+  </section>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <section id="client">
+    <h2>Client Kami</h2>
+    <p>Kami dipercaya oleh berbagai brand, UMKM, dan perusahaan besar untuk mengelola digital advertising mereka secara profesional.</p>
+  </section>
 
-  <!-- Optional: pause marquee on hover for accessibility -->
-  <script>
-    (function(){
-      const marquee = document.querySelector('.marquee');
-      if(!marquee) return;
-      marquee.addEventListener('mouseenter', ()=> marquee.style.animationPlayState = 'paused');
-      marquee.addEventListener('mouseleave', ()=> marquee.style.animationPlayState = 'running');
-    })();
-  </script>
+  <section id="testimoni">
+    <h2>Testimoni</h2>
+    <p>"NextAds bantu kami naik 300% dalam 2 bulan!" — <em>Rico, CEO UMKM Jogja</em></p>
+    <p>"Support cepat dan hasil iklan sangat efisien." — <em>Alya, Owner Skincare Brand</em></p>
+  </section>
+
+  <section id="pricing">
+    <h2>Paket Harga</h2>
+    <ul>
+      <li><strong>Starter:</strong> Rp500rb/bln - Iklan & report</li>
+      <li><strong>Pro:</strong> Rp1.5jt/bln - Iklan + konten + optimasi</li>
+      <li><strong>Premium:</strong> Rp3jt/bln - Full strategi + tim support</li>
+    </ul>
+  </section>
+
+  <section id="founder">
+    <h2>Founder</h2>
+    <p>Didirikan oleh <strong>Fahmi Alamsyah</strong>, praktisi digital marketing dengan pengalaman lebih dari 8 tahun membangun brand lokal dari nol hingga ratusan juta penjualan.</p>
+  </section>
+
+  <div class="footer">
+    &copy; 2025 NextAds. All Rights Reserved.
+  </div>
 </body>
 </html>
