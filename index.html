@@ -1,0 +1,111 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Instagram, Facebook, Twitter } from "lucide-react";
+
+export default function NextAds() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-purple-900 via-purple-800 to-purple-950 text-white p-6">
+      <header className="flex flex-col md:flex-row justify-between items-center mb-10">
+        <div>
+          <h1 className="text-4xl font-bold mb-2 md:mb-0">NextAds</h1>
+          <p className="text-purple-300 text-sm max-w-xl">
+            Digital Expert, Real Impact. NextAds adalah agensi digital yang menggabungkan teknologi, kreativitas, dan data untuk menghasilkan solusi pemasaran yang berdampak nyata. Dari branding, content creation, social media ads, hingga performance marketing — kami hadir untuk membawa bisnis Anda naik level.
+          </p>
+        </div>
+        <nav className="space-x-6 mt-4 md:mt-0">
+          <a href="#home" className="hover:text-purple-300">Home</a>
+          <a href="#portfolio" className="hover:text-purple-300">Portofolio</a>
+          <a href="#pricing" className="hover:text-purple-300">Pricing</a>
+          <a href="#owner" className="hover:text-purple-300">Pemilik</a>
+          <a href="#social" className="hover:text-purple-300">Sosial Media</a>
+        </nav>
+      </header>
+
+      <section id="home" className="mb-16">
+        <h2 className="text-3xl font-semibold mb-4">Welcome to NextAds</h2>
+        <p className="text-purple-200 max-w-2xl">
+          Kami adalah mitra strategis Anda dalam mengembangkan bisnis melalui iklan digital yang efektif, konten kreatif, dan analitik berbasis data. Bersama NextAds, hasil bukan sekadar janji — tapi bukti nyata dari strategi yang dijalankan secara presisi dan kreatif.
+        </p>
+      </section>
+
+      <section id="portfolio" className="mb-16">
+        <h2 className="text-xl font-semibold mb-6">Portofolio Project</h2>
+        <div className="grid md:grid-cols-3 gap-4">
+          {[1, 2, 3].map((i) => (
+            <Card key={i} className="bg-purple-800 border-purple-700">
+              <CardContent className="p-4">
+                <h3 className="font-semibold">Project {i}</h3>
+                <p className="text-sm text-purple-200">Deskripsi singkat tentang project ke-{i} yang sudah sukses kami tangani.</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section id="pricing" className="mb-16">
+        <h2 className="text-xl font-semibold mb-6">Pricing</h2>
+        <div className="grid md:grid-cols-3 gap-4">
+          {['Basic', 'Standard', 'Premium'].map((tier, i) => (
+            <Card key={i} className="bg-purple-800 border-purple-700">
+              <CardContent className="p-4">
+                <h3 className="font-semibold text-lg">{tier}</h3>
+                <p className="text-purple-200 text-sm">Fitur {tier.toLowerCase()} dengan layanan lengkap sesuai kebutuhanmu.</p>
+                <Button className="mt-4 bg-purple-600 hover:bg-purple-700">Pilih Paket</Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section id="owner" className="mb-16">
+        <h2 className="text-xl font-semibold mb-4">Pemilik</h2>
+        <Card className="bg-purple-800 border-purple-700 max-w-md">
+          <CardContent className="p-4">
+            <h3 className="font-semibold text-lg">Alex Pratama</h3>
+            <p className="text-sm text-purple-200">Founder & CEO NextAds. Berpengalaman lebih dari 10 tahun di dunia digital marketing dan brand strategy.</p>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section id="clients" className="mb-16">
+        <h2 className="text-xl font-semibold mb-4">Klien Kami</h2>
+        <div className="overflow-hidden whitespace-nowrap">
+          <div className="animate-marquee flex space-x-10">
+            {["/logo1.png", "/logo2.png", "/logo3.png", "/logo4.png", "/logo5.png", "/logo6.png"].map((src, i) => (
+              <img key={i} src={src} alt={`client-${i}`} className="h-12 w-auto" />
+            ))}
+            {["/logo1.png", "/logo2.png", "/logo3.png", "/logo4.png", "/logo5.png", "/logo6.png"].map((src, i) => (
+              <img key={`dup-${i}`} src={src} alt={`client-dup-${i}`} className="h-12 w-auto" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="social" className="mb-16">
+        <h2 className="text-xl font-semibold mb-4">Sosial Media</h2>
+        <div className="flex space-x-6 text-purple-200">
+          <a href="#"><Instagram /></a>
+          <a href="#"><Facebook /></a>
+          <a href="#"><Twitter /></a>
+        </div>
+      </section>
+
+      <footer className="text-center text-sm text-purple-400 mt-10">
+        © 2025 NextAds. All rights reserved.
+      </footer>
+
+      <style jsx>{`
+        .animate-marquee {
+          display: inline-flex;
+          animation: marquee 25s linear infinite;
+        }
+
+        @keyframes marquee {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
+  );
+}
